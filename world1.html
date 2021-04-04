@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>World 1 - Been Club</title>
+		<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+		<script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+		<script src="https://unpkg.com/aframe-thumb-controls-component@1.1.0/dist/aframe-thumb-controls-component.min.js"></script>
+	</head>
+	<body>
+		<a-scene>
+			<a-sky color="#DDDDFF"></a-sky>
+			<a-plane position="0 0 -4" rotation="-90 0 0" width="20" height="20" color="ECECEC"></a-plane>
+			<!-- nav-mesh: protecting us from running thru things  -->
+      		<a-entity id="navmesh-Hello" gltf-model="assets/gltf/AdvHelloWorldnavmesh.gltf" visible="false" nav-mesh=""></a-entity>
+			<!-- Basic movement and teleportation  -->
+      		<a-entity id="cameraRig" movement-controls="constrainToNavMesh: true;" navigator="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable" position="0 0 0" rotation="0 0 0">
+        	<!-- camera -->
+        	<a-entity id="head" camera="active: true" position="0 1.6 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: false" ></a-entity>
+            <!-- Left Controller -->
+            <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #9400D3" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; button: trigger; curveShootingSpeed: 18; landingMaxAngle: 60" visible="true"></a-entity>
+            <!-- Right Controller -->
+            <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #9400D3"></a-entity>
+      </a-entity>
+      </a-entity>
+		</a-scene>
+	</body>
+</html>
